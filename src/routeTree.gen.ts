@@ -14,8 +14,7 @@ import { Route as AboutRouteImport } from './routes/about'
 import { Route as ContactRouteImport } from './routes/contact'
 import { Route as JournalRouteImport } from './routes/journal'
 import { Route as ResourcesRouteImport } from './routes/resources'
-import { Route as JournalCategoryRouteImport } from './routes/journal.$category'
-import { Route as JournalSlugRouteImport } from './routes/journal.$slug'
+import { Route as JournalSegmentRouteImport } from './routes/journal.$segment'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -42,14 +41,9 @@ const ResourcesRoute = ResourcesRouteImport.update({
   path: '/resources',
   getParentRoute: () => rootRouteImport,
 } as any)
-const JournalCategoryRoute = JournalCategoryRouteImport.update({
-  id: '/$category',
-  path: '/$category',
-  getParentRoute: () => JournalRoute,
-} as any)
-const JournalSlugRoute = JournalSlugRouteImport.update({
-  id: '/$slug',
-  path: '/$slug',
+const JournalSegmentRoute = JournalSegmentRouteImport.update({
+  id: '/$segment',
+  path: '/$segment',
   getParentRoute: () => JournalRoute,
 } as any)
 
@@ -59,8 +53,7 @@ export interface FileRoutesByFullPath {
   '/contact': typeof ContactRoute
   '/journal': typeof JournalRouteWithChildren
   '/resources': typeof ResourcesRoute
-  '/journal/$category': typeof JournalCategoryRoute
-  '/journal/$slug': typeof JournalSlugRoute
+  '/journal/$segment': typeof JournalSegmentRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -68,8 +61,7 @@ export interface FileRoutesByTo {
   '/contact': typeof ContactRoute
   '/journal': typeof JournalRouteWithChildren
   '/resources': typeof ResourcesRoute
-  '/journal/$category': typeof JournalCategoryRoute
-  '/journal/$slug': typeof JournalSlugRoute
+  '/journal/$segment': typeof JournalSegmentRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -78,8 +70,7 @@ export interface FileRoutesById {
   '/contact': typeof ContactRoute
   '/journal': typeof JournalRouteWithChildren
   '/resources': typeof ResourcesRoute
-  '/journal/$category': typeof JournalCategoryRoute
-  '/journal/$slug': typeof JournalSlugRoute
+  '/journal/$segment': typeof JournalSegmentRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -89,8 +80,7 @@ export interface FileRouteTypes {
     | '/contact'
     | '/journal'
     | '/resources'
-    | '/journal/$category'
-    | '/journal/$slug'
+    | '/journal/$segment'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -98,8 +88,7 @@ export interface FileRouteTypes {
     | '/contact'
     | '/journal'
     | '/resources'
-    | '/journal/$category'
-    | '/journal/$slug'
+    | '/journal/$segment'
   id:
     | '__root__'
     | '/'
@@ -107,8 +96,7 @@ export interface FileRouteTypes {
     | '/contact'
     | '/journal'
     | '/resources'
-    | '/journal/$category'
-    | '/journal/$slug'
+    | '/journal/$segment'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -156,31 +144,22 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ResourcesRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/journal/$category': {
-      id: '/journal/$category'
-      path: '/$category'
-      fullPath: '/journal/$category'
-      preLoaderRoute: typeof JournalCategoryRouteImport
-      parentRoute: typeof JournalRoute
-    }
-    '/journal/$slug': {
-      id: '/journal/$slug'
-      path: '/$slug'
-      fullPath: '/journal/$slug'
-      preLoaderRoute: typeof JournalSlugRouteImport
+    '/journal/$segment': {
+      id: '/journal/$segment'
+      path: '/$segment'
+      fullPath: '/journal/$segment'
+      preLoaderRoute: typeof JournalSegmentRouteImport
       parentRoute: typeof JournalRoute
     }
   }
 }
 
 interface JournalRouteChildren {
-  JournalCategoryRoute: typeof JournalCategoryRoute
-  JournalSlugRoute: typeof JournalSlugRoute
+  JournalSegmentRoute: typeof JournalSegmentRoute
 }
 
 const JournalRouteChildren: JournalRouteChildren = {
-  JournalCategoryRoute: JournalCategoryRoute,
-  JournalSlugRoute: JournalSlugRoute,
+  JournalSegmentRoute: JournalSegmentRoute,
 }
 
 const JournalRouteWithChildren =
