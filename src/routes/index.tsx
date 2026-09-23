@@ -1,24 +1,23 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
+import { ArrowDown, ArrowRight, Calculator, Dumbbell, FileText, Instagram, Music2 } from "lucide-react";
+import { useEffect, useRef } from "react";
+import { Button } from "@/components/ui/button";
+import { NewsletterForm } from "@/components/clufit/NewsletterForm";
+import { Reveal } from "@/components/clufit/Reveal";
+import { ArticleCard } from "@/components/clufit/ArticleCard";
+import { articles, images } from "@/lib/clufit-data";
 
-// No head() here: the home route inherits title/description/og/twitter from
-// __root.tsx, and ships no og:image so serve-time hosting can inject the
-// project's social preview (explicit og:image or latest screenshot).
 export const Route = createFileRoute("/")({
-  component: Index,
+  head: () => ({ meta: [{ title: "CLUFIT — Nobody Trains Alone" },{ name:"description",content:"Join CLUFIT for weekly training, nutrition and mindset intel built for people who show up."},{property:"og:title",content:"CLUFIT — Nobody Trains Alone"},{property:"og:description",content:"Weekly training, nutrition and mindset intel. Commit. Challenge. Progress."},{property:"og:type",content:"website"},{name:"twitter:card",content:"summary_large_image"}], links:[{rel:"canonical",href:"/"}] }),
+  component: Home,
 });
 
-// IMPORTANT: Replace this placeholder. See ./README.md for routing conventions.
-function Index() {
-  return (
-    <div
-      className="flex min-h-screen items-center justify-center"
-      style={{ backgroundColor: "#fcfbf8" }}
-    >
-      <img
-        data-lovable-blank-page-placeholder="REMOVE_THIS"
-        src="https://cdn.gpteng.co/blank-app-v1.svg"
-        alt="Your app will live here!"
-      />
-    </div>
-  );
-}
+function Home(){const hero=useRef<HTMLImageElement>(null);useEffect(()=>{const on=()=>{if(hero.current)hero.current.style.transform=`scale(1.05) translateY(${scrollY*.08}px)`};addEventListener("scroll",on,{passive:true});return()=>removeEventListener("scroll",on)},[]);return <>
+ <section className="hero" id="join"><img ref={hero} src={images.hero} alt="Two training partners pushing weighted sleds" width="1920" height="1280" fetchPriority="high"/><div className="hero-shade"/><div className="hero-content"><p className="kicker">COMMIT <i/> CHALLENGE <i/> PROGRESS</p><h1 aria-label="Nobody trains alone.">{"NOBODY TRAINS ALONE.".split("").map((c,i)=><span key={i} style={{animationDelay:`${i*32}ms`}}>{c===" "?"\u00a0":c}</span>)}</h1><p className="hero-sub">Join the club. Weekly training, nutrition and mindset intel — straight to your inbox.</p><NewsletterForm/></div><a href="#who" className="scroll-cue" aria-label="Scroll to who we are"><span>SCROLL</span><ArrowDown/></a></section>
+ <section id="who" className="angled-light"><Reveal><p className="kicker dark-kicker">THIS IS CLUFIT</p><h2>WE'RE NOT A GYM.<br/>WE'RE A CLUB.</h2><p className="lead">Clufit is a community for people who train with purpose — and train better together.</p></Reveal><div className="values">{[["01","COMMIT","Decide. Put the work on the calendar."],["02","CHALLENGE","Raise the standard. Then raise it again."],["03","PROGRESS","Measure what matters. Keep moving."]].map(v=><Reveal key={v[0]} className="value"><span>{v[0]}</span><h3>{v[1]}</h3><p>{v[2]}</p><i/></Reveal>)}</div></section>
+ <section className="section journal-home"><Reveal><p className="kicker">THE CLUFIT JOURNAL</p><h2>STRAIGHT FROM<br/>THE TOP.</h2><p className="section-sub">What the best are doing right now. Training, nutrition, news.</p></Reveal><div className="article-row">{articles.slice(0,3).map(a=><ArticleCard key={a.slug} article={a} slanted/>)}</div><Button asChild variant="clufitOutline"><Link to="/journal">READ THE JOURNAL <ArrowRight/></Link></Button></section>
+ <section className="section resources-home"><Reveal><p className="kicker blue">BUILT FOR THE WORK</p><h2>TRAIN SMARTER. FREE.</h2><p className="section-sub">Programs, calculators and guides built to make you better.</p></Reveal><div className="resource-grid"><div className="resource-card" data-cursor="VIEW"><Dumbbell/><span>01</span><h3>PROGRAMS</h3><p>Free training plans. Clear work. Zero noise.</p></div><div className="resource-card" data-cursor="VIEW"><Calculator/><span>02</span><h3>CALCULATORS</h3><p>Know your numbers. Train with intent.</p></div><div className="resource-card" data-cursor="VIEW"><FileText/><span>03</span><h3>GUIDES</h3><p>Practical instruction. Built to be used.</p></div></div><Button asChild variant="clufit"><Link to="/resources">EXPLORE RESOURCES <ArrowRight/></Link></Button></section>
+ <section className="community"><div className="community-head"><div><p className="kicker">THE CLUB AT WORK</p><h2>#CLUFITDUO</h2></div><div><p>Tag your partner. Show the work.</p><span className="social-icons"><Instagram/><Music2/></span></div></div><Marquee reverse={false}/><Marquee reverse/></section>
+ <div className="red-slash" aria-hidden="true"/><section className="contact-cta"><Reveal><h2>GOT SOMETHING<br/>TO SAY?</h2><p>Brands, athletes, coaches, members — let's talk.</p><Button asChild variant="clufit"><Link to="/contact">CONTACT US <ArrowRight/></Link></Button></Reveal></section>
+ </>}
+function Marquee({reverse}:{reverse:boolean}){const imgs=[images.hero,images.squat,images.ropes,images.squat,images.hero,images.ropes];return <div className={`marquee ${reverse?"reverse":""}`}><div>{[...imgs,...imgs].map((src,i)=><img key={i} src={src} alt="CLUFIT community training" width="500" height="500" loading="lazy"/>)}</div></div>}
