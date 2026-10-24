@@ -16,7 +16,7 @@ const buttonVariants = cva(
         secondary: "bg-secondary text-secondary-foreground shadow-sm hover:bg-secondary/80",
         ghost: "hover:bg-accent hover:text-accent-foreground",
         link: "text-primary underline-offset-4 hover:underline",
-        clufit: "btn-clufit rounded-none bg-primary text-primary-foreground shadow-none",
+        clufit: "btn-clufit rounded-none border border-foreground bg-transparent text-foreground shadow-none",
         clufitOutline: "btn-outline rounded-none border border-foreground bg-transparent text-foreground shadow-none",
         iconDark: "rounded-none bg-transparent text-foreground shadow-none hover:bg-accent",
       },

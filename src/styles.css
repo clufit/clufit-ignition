@@ -76,7 +76,7 @@
 .resource-card h3{font-size:32px}.resource-card p{font-size:14px;line-height:1.6;color:var(--muted-foreground)}
 
 .red-slash{height:4px;clip-path:none;margin:0 5%;background:var(--ink)}
-.contact-cta{padding:90px 5%}.contact-cta p{font-size:16px}
+.contact-cta{padding:90px 5%}.contact-cta p{font-size:16px}.contact-cta .newsletter{width:480px;max-width:100%;gap:8px}.contact-cta .newsletter input{height:48px;font-size:11px}.contact-cta .newsletter .btn-clufit{height:48px;padding-inline:20px}
 .footer,.mobile-menu{--background:var(--ink);--foreground:var(--on-photo);--card:oklch(.22 0 0);--muted-foreground:var(--on-dark-muted);--border:oklch(.36 0 0);--muted:oklch(.29 0 0);color:var(--foreground);background:var(--background)}
 .footer{padding-top:64px}.footer h2{font-size:30px}.footer-grid{grid-template-columns:1.1fr 1.8fr repeat(3,1fr);gap:32px}.footer p{font-size:11px}.footer a:hover{color:var(--on-photo)}
 .footer-news .newsletter{gap:6px}.footer-news input{border-right:1px solid var(--border);font-size:10px}.footer-news .btn-clufit,.footer-news .btn-outline{font-size:10px}.footer .newsletter-success{font-size:24px;color:var(--on-photo)}
