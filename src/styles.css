@@ -54,6 +54,7 @@
 .hero .newsletter input{background:var(--background);color:var(--ink);border:1px solid var(--background);font-size:11px;height:48px}
 .hero .newsletter input::placeholder{color:var(--muted-foreground)}.hero .newsletter .btn-clufit{height:48px;padding-inline:20px}
 .hero .newsletter-success{color:var(--on-photo)}.scroll-cue{bottom:30px;font-size:9px;letter-spacing:0}
+.newsletter-error{font-size:12px;font-weight:700;color:var(--primary);margin-top:10px}.hero .newsletter-error,.footer .newsletter-error{color:var(--on-photo)}
 .kicker,.category{font-size:10px;letter-spacing:0}.kicker{gap:12px}.kicker i{width:12px}
 .angled-light{background:transparent;clip-path:none;margin-top:0;padding:80px max(5%,calc((100vw - 1180px)/2))}
 .angled-light h2,.section h2,.contact-cta h2,.page-hero h1,.about-page h1{font-size:64px;line-height:1.03;margin:20px 0}
