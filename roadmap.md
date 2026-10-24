@@ -1,10 +1,6 @@
-# CLUFIT Build Roadmap
+# CLUFIT Visual Refresh
 
-- [ ] Shared shell, navigation, footer, motion, cursor
-- [ ] Home page sections and newsletter states
-- [ ] Journal index, category routes, six articles
-- [ ] Article template with schema, TOC, FAQ, related content
-- [ ] Resources page with 1RM calculator and gated guides
-- [ ] About and contact pages
-- [ ] Route metadata, favicon, robots review
-- [ ] Responsive and interaction verification
+- [ ] White textured canvas and clean athletic visual system across existing pages
+- [ ] Rectangular hero, white navigation, updated typography and controls
+- [ ] Preserve all section content and existing interactions
+- [ ] Verify desktop/mobile layouts, navigation, newsletter and calculator
