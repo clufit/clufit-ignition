@@ -8,3 +8,5 @@
 > Commits you push to the connected branch sync back to Lovable and show up in
 > the editor, so keep the branch in a working state.
 <!-- LOVABLE:END -->
+
+- Keep CLUFIT's shared visual system in src/styles.css using semantic tokens and context overrides for photo overlays and dark footer surfaces; this keeps all content routes visually consistent.
