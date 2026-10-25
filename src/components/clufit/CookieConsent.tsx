@@ -1,12 +1,15 @@
 import { useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
 
-const STORAGE_KEY = "clufit-cookie-consent";
+export const COOKIE_CONSENT_STORAGE_KEY = "clufit-cookie-consent";
+export const COOKIE_CONSENT_EVENT = "clufit:cookie-consent";
+const STORAGE_KEY = COOKIE_CONSENT_STORAGE_KEY;
 
 function setConsentCookie(value: "accepted" | "declined") {
   try {
     document.cookie = `clufit_cookie_consent=${value}; max-age=31536000; path=/; samesite=lax`;
     localStorage.setItem(STORAGE_KEY, value);
+    window.dispatchEvent(new CustomEvent(COOKIE_CONSENT_EVENT, { detail: value }));
   } catch { /* storage unavailable */ }
 }
 
