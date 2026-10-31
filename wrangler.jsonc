@@ -1,0 +1,5 @@
+{
+  // Nitro genera la config completa en .output/server/wrangler.json y la combina con esta.
+  "name": "clufit-ignition",
+  "previews": {}
+}
