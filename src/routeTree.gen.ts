@@ -14,7 +14,10 @@ import { Route as AboutRouteImport } from './routes/about'
 import { Route as AdminRouteImport } from './routes/admin'
 import { Route as ContactRouteImport } from './routes/contact'
 import { Route as JournalRouteImport } from './routes/journal'
+import { Route as PrivacyRouteImport } from './routes/privacy'
 import { Route as ResourcesRouteImport } from './routes/resources'
+import { Route as TermsRouteImport } from './routes/terms'
+import { Route as UnsubscribeRouteImport } from './routes/unsubscribe'
 import { Route as AdminJournalRouteImport } from './routes/admin.journal'
 import { Route as AdminLoginRouteImport } from './routes/admin.login'
 import { Route as AdminMessagesRouteImport } from './routes/admin.messages'
@@ -46,9 +49,24 @@ const JournalRoute = JournalRouteImport.update({
   path: '/journal',
   getParentRoute: () => rootRouteImport,
 } as any)
+const PrivacyRoute = PrivacyRouteImport.update({
+  id: '/privacy',
+  path: '/privacy',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ResourcesRoute = ResourcesRouteImport.update({
   id: '/resources',
   path: '/resources',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const TermsRoute = TermsRouteImport.update({
+  id: '/terms',
+  path: '/terms',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const UnsubscribeRoute = UnsubscribeRouteImport.update({
+  id: '/unsubscribe',
+  path: '/unsubscribe',
   getParentRoute: () => rootRouteImport,
 } as any)
 const AdminJournalRoute = AdminJournalRouteImport.update({
@@ -83,7 +101,10 @@ export interface FileRoutesByFullPath {
   '/admin': typeof AdminRouteWithChildren
   '/contact': typeof ContactRoute
   '/journal': typeof JournalRouteWithChildren
+  '/privacy': typeof PrivacyRoute
   '/resources': typeof ResourcesRoute
+  '/terms': typeof TermsRoute
+  '/unsubscribe': typeof UnsubscribeRoute
   '/admin/journal': typeof AdminJournalRoute
   '/admin/login': typeof AdminLoginRoute
   '/admin/messages': typeof AdminMessagesRoute
@@ -96,7 +117,10 @@ export interface FileRoutesByTo {
   '/admin': typeof AdminRouteWithChildren
   '/contact': typeof ContactRoute
   '/journal': typeof JournalRouteWithChildren
+  '/privacy': typeof PrivacyRoute
   '/resources': typeof ResourcesRoute
+  '/terms': typeof TermsRoute
+  '/unsubscribe': typeof UnsubscribeRoute
   '/admin/journal': typeof AdminJournalRoute
   '/admin/login': typeof AdminLoginRoute
   '/admin/messages': typeof AdminMessagesRoute
@@ -110,7 +134,10 @@ export interface FileRoutesById {
   '/admin': typeof AdminRouteWithChildren
   '/contact': typeof ContactRoute
   '/journal': typeof JournalRouteWithChildren
+  '/privacy': typeof PrivacyRoute
   '/resources': typeof ResourcesRoute
+  '/terms': typeof TermsRoute
+  '/unsubscribe': typeof UnsubscribeRoute
   '/admin/journal': typeof AdminJournalRoute
   '/admin/login': typeof AdminLoginRoute
   '/admin/messages': typeof AdminMessagesRoute
@@ -125,7 +152,10 @@ export interface FileRouteTypes {
     | '/admin'
     | '/contact'
     | '/journal'
+    | '/privacy'
     | '/resources'
+    | '/terms'
+    | '/unsubscribe'
     | '/admin/journal'
     | '/admin/login'
     | '/admin/messages'
@@ -138,7 +168,10 @@ export interface FileRouteTypes {
     | '/admin'
     | '/contact'
     | '/journal'
+    | '/privacy'
     | '/resources'
+    | '/terms'
+    | '/unsubscribe'
     | '/admin/journal'
     | '/admin/login'
     | '/admin/messages'
@@ -151,7 +184,10 @@ export interface FileRouteTypes {
     | '/admin'
     | '/contact'
     | '/journal'
+    | '/privacy'
     | '/resources'
+    | '/terms'
+    | '/unsubscribe'
     | '/admin/journal'
     | '/admin/login'
     | '/admin/messages'
@@ -165,7 +201,10 @@ export interface RootRouteChildren {
   AdminRoute: typeof AdminRouteWithChildren
   ContactRoute: typeof ContactRoute
   JournalRoute: typeof JournalRouteWithChildren
+  PrivacyRoute: typeof PrivacyRoute
   ResourcesRoute: typeof ResourcesRoute
+  TermsRoute: typeof TermsRoute
+  UnsubscribeRoute: typeof UnsubscribeRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -205,11 +244,32 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof JournalRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/privacy': {
+      id: '/privacy'
+      path: '/privacy'
+      fullPath: '/privacy'
+      preLoaderRoute: typeof PrivacyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/resources': {
       id: '/resources'
       path: '/resources'
       fullPath: '/resources'
       preLoaderRoute: typeof ResourcesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/terms': {
+      id: '/terms'
+      path: '/terms'
+      fullPath: '/terms'
+      preLoaderRoute: typeof TermsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/unsubscribe': {
+      id: '/unsubscribe'
+      path: '/unsubscribe'
+      fullPath: '/unsubscribe'
+      preLoaderRoute: typeof UnsubscribeRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/admin/journal': {
@@ -283,7 +343,10 @@ const rootRouteChildren: RootRouteChildren = {
   AdminRoute: AdminRouteWithChildren,
   ContactRoute: ContactRoute,
   JournalRoute: JournalRouteWithChildren,
+  PrivacyRoute: PrivacyRoute,
   ResourcesRoute: ResourcesRoute,
+  TermsRoute: TermsRoute,
+  UnsubscribeRoute: UnsubscribeRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

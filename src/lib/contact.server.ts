@@ -4,6 +4,7 @@ import { z } from "zod";
 import { db } from "../../db/index";
 import { contactMessages } from "../../db/schema";
 import { requireAdminSession } from "./admin-auth.server";
+import { checkRateLimit } from "./rate-limit.server";
 
 const contactInput = z.object({
   name: z.string().trim().min(1),
@@ -18,6 +19,9 @@ export const submitContactMessage = createServerFn({ method: "POST" })
   .validator((data: unknown) => contactInput.parse(data))
   .handler(async ({ data }) => {
     if (data.website) return { ok: true } as const;
+    if (!(await checkRateLimit("contact", 5, 900))) {
+      return { ok: false, error: "Too many messages sent. Try again in a bit." } as const;
+    }
     await db.insert(contactMessages).values({
       name: data.name,
       email: data.email,

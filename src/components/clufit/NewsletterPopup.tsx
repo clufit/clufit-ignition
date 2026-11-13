@@ -22,7 +22,7 @@ export function NewsletterPopup({ open, onOpenChange }: { open: boolean; onOpenC
         <span className="kicker">DON'T TRAIN BLIND</span>
         <h2 id="newsletter-popup-title">GET THE INTEL.</h2>
         <p>Weekly training, nutrition and mindset intel — straight to your inbox.</p>
-        <NewsletterForm onSuccess={subscribed} />
+        <NewsletterForm source="popup" onSuccess={subscribed} />
       </div>
     </div>
   );

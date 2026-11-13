@@ -5,7 +5,7 @@ import { useEffect, useState, type ReactNode } from "react";
 import { Button } from "@/components/ui/button";
 import { NewsletterForm } from "./NewsletterForm";
 import { NewsletterPopup, NEWSLETTER_POPUP_STORAGE_KEY } from "./NewsletterPopup";
-import { CookieConsent } from "./CookieConsent";
+import { CookieConsent, openCookieSettings } from "./CookieConsent";
 import { Analytics } from "./Analytics";
 import paperTexture from "@/assets/clufit-paper.jpg";
 import isotype from "@/assets/clufit-isotype.png";
@@ -41,5 +41,5 @@ export function SiteShell({ children }: { children: ReactNode }) {
   <Analytics/>
   </div>
 }
-function Footer(){return <footer className="footer"><div className="footer-grid"><div><Link to="/" className="logo"><Wordmark/></Link><p>NOBODY TRAINS ALONE.</p></div><div className="footer-news"><h2>GET THE INTEL.</h2><NewsletterForm compact outline /></div><FooterLinks title="NAVIGATION" links={nav.map(n=>[n.label,n.to])}/><FooterLinks title="JOURNAL" links={[["Training","/journal/training"],["Nutrition","/journal/nutrition"],["Mindset","/journal/habits-mindset"],["Recovery","/journal/recovery"]]}/><div><h3>SOCIAL</h3><a href="https://instagram.com" target="_blank" rel="noreferrer"><FaInstagram/> Instagram</a><a href="https://tiktok.com" target="_blank" rel="noreferrer"><FaTiktok/> TikTok</a><h3 className="legal-title">LEGAL</h3><span>Privacy</span><span>Terms</span></div></div><div className="footer-bottom"><span>© 2026 CLUFIT</span><span>COMMIT. CHALLENGE. PROGRESS.</span></div></footer>}
+function Footer(){return <footer className="footer"><div className="footer-grid"><div><Link to="/" className="logo"><Wordmark/></Link><p>NOBODY TRAINS ALONE.</p></div><div className="footer-news"><h2>GET THE INTEL.</h2><NewsletterForm compact outline /></div><FooterLinks title="NAVIGATION" links={nav.map(n=>[n.label,n.to])}/><FooterLinks title="JOURNAL" links={[["Training","/journal/training"],["Nutrition","/journal/nutrition"],["Mindset","/journal/habits-mindset"],["Recovery","/journal/recovery"]]}/><div><h3>SOCIAL</h3><a href="https://instagram.com" target="_blank" rel="noreferrer"><FaInstagram/> Instagram</a><a href="https://tiktok.com" target="_blank" rel="noreferrer"><FaTiktok/> TikTok</a><h3 className="legal-title">LEGAL</h3><Link to="/privacy">Privacy Policy</Link><Link to="/privacy" hash="cookies">Cookie Policy</Link><Link to="/terms">Terms of Use</Link><button type="button" className="footer-link-button" onClick={openCookieSettings}>Cookie Settings</button></div></div><div className="footer-bottom"><span>© 2026 CLUFIT</span><span>COMMIT. CHALLENGE. PROGRESS.</span></div></footer>}
 function FooterLinks({title,links}:{title:string;links:readonly (readonly [string,string])[]}){return <div><h3>{title}</h3>{links.map(([label,to])=><Link key={to} to={to}>{label}</Link>)}</div>}

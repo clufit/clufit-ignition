@@ -13,16 +13,17 @@ function Contact(){
     const form=new FormData(e.currentTarget);
     setPending(true);setError(null);
     try{
-      await submitContactMessage({data:{
+      const res=await submitContactMessage({data:{
         name:String(form.get("name")??""),
         email:String(form.get("email")??""),
         reason:String(form.get("reason")??""),
         message:String(form.get("message")??""),
         website:String(form.get("website")??""),
       }});
+      if(!res.ok) throw new Error(res.error);
       setSent(true);
-    }catch{
-      setError("Something went wrong. Try again.");
+    }catch(err){
+      setError(err instanceof Error?err.message:"Something went wrong. Try again.");
     }finally{
       setPending(false);
     }
