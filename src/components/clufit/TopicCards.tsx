@@ -1,14 +1,15 @@
 import { useEffect, useRef, useState } from "react";
-import squat from "@/assets/clufit-squat.jpg";
-import hero from "@/assets/clufit-hero.jpg";
-import ropes from "@/assets/clufit-ropes.jpg";
+import strength from "@/assets/strength.webp";
+import hypertrophy from "@/assets/hypertrophy.webp";
+import habits from "@/assets/habits.webp";
+import nutrition from "@/assets/nutrition.webp";
 
 const topics = [
-  { label: "Strength", image: squat },
-  { label: "Hypertrophy", image: hero },
+  { label: "Strength", image: strength },
+  { label: "Hypertrophy", image: hypertrophy },
   { label: "Fat Loss", image: "/images/about-banner.png" },
-  { label: "Habits", image: ropes },
-  { label: "Nutrition", image: "/images/about-bottom.png" },
+  { label: "Habits", image: habits },
+  { label: "Nutrition", image: nutrition },
 ] as const;
 
 /** Mobile carousel scales up whichever card sits nearest the track's center. */
