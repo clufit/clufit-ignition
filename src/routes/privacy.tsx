@@ -88,7 +88,7 @@ function Privacy() {
         <p>We may update this policy as the Site evolves. Material changes will be reflected by updating the "Last updated" date above.</p>
 
         <h2>9. Contact</h2>
-        <p>Questions about this policy? Reach us through the <a href="/contact">Contact page</a>.</p>
+        <p>Questions about this policy? Reach us through the <a href="/contact">Contact page</a>. CLUFIT operates under the laws of the State of Wyoming, USA. <em>(Placeholder — add CLUFIT's registered mailing address here once finalized.)</em></p>
       </section>
     </div>
   );

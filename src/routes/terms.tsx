@@ -66,10 +66,10 @@ function Terms() {
         <p>We may update these Terms as the Site evolves (for example, when Phase 2 adds shipping, returns or payments for physical products). Continued use of the Site after a change means you accept the updated Terms.</p>
 
         <h2>9. Governing law</h2>
-        <p>These Terms are governed by the laws of the United States and the state in which CLUFIT operates, without regard to conflict-of-law rules. <em>(Placeholder — confirm the specific state once CLUFIT's registered business address is finalized.)</em></p>
+        <p>These Terms are governed by the laws of the State of Wyoming, USA, without regard to conflict-of-law rules.</p>
 
         <h2>10. Contact</h2>
-        <p>Questions about these Terms? Reach us through the <a href="/contact">Contact page</a>.</p>
+        <p>Questions about these Terms? Reach us through the <a href="/contact">Contact page</a>. <em>(Placeholder — add CLUFIT's registered mailing address here once finalized.)</em></p>
       </section>
     </div>
   );
