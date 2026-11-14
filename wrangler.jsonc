@@ -1,5 +1,11 @@
 {
   // Nitro genera la config completa en .output/server/wrangler.json y la combina con esta.
   "name": "clufit-ignition",
-  "previews": {}
+  "previews": {},
+  // Sin esto, cada deploy borra las variables/secrets cargadas a mano en el dashboard
+  // de Cloudflare (Workers & Pages -> clufit-ignition -> Variables and Secrets).
+  "keep_vars": true,
+  "vars": {
+    "GA_PROPERTY_ID": "560657367"
+  }
 }
