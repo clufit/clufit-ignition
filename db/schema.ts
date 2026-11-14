@@ -3,7 +3,17 @@ import { pgTable, serial, text, timestamp, boolean, integer } from "drizzle-orm/
 export const newsletterSubscribers = pgTable("newsletter_subscribers", {
   id: serial().primaryKey(),
   email: text().notNull().unique(),
+  source: text().notNull().default("footer"),
+  consentedAt: timestamp("consented_at").defaultNow().notNull(),
+  unsubscribeToken: text("unsubscribe_token").notNull().unique(),
+  unsubscribedAt: timestamp("unsubscribed_at"),
   createdAt: timestamp("created_at").defaultNow().notNull(),
+});
+
+export const rateLimits = pgTable("rate_limits", {
+  key: text().primaryKey(),
+  windowStart: timestamp("window_start").defaultNow().notNull(),
+  count: integer().notNull().default(1),
 });
 
 export const journalArticles = pgTable("journal_articles", {
